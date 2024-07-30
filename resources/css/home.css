@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FFE5E0; /* Light pink background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 50px 0;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #FF6F61; /* Peach orange */
+}
+
+header p {
+    font-size: 1.2em;
+    color: #FF9671; /* Low pink */
+}
+
+main {
+    text-align: center;
+}
+
+.intro {
+    margin: 40px 0;
+}
+
+.intro h2 {
+    font-size: 2em;
+    color: #FF6F61; /* Peach orange */
+}
+
+.intro p {
+    font-size: 1.1em;
+    color: #FF9671; /* Low pink */
+}
+
+.cta .button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    color: #FFF;
+    background-color: #FF6F61; /* Peach orange */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta .button:hover {
+    background-color: #FF9671; /* Low pink */
+}
+
+footer {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 0.9em;
+    color: #555;
+}

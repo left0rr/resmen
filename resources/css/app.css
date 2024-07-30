@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+svg {
+    width: 30px;
+}
+a {
+    text-decoration: none;
+    color: #18181b ;
+}
+button{
+    cursor: pointer;
+}
+.container{
+    width: 1400px;
+    max-width: 90vw;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 205px;
+    transition: 0.5s;
+}
+
+.icon-cart{
+    position: relative;
+}
+
+.title {
+    font-size: xx-large;
+}
+
+.cart{
+    right: -400px;
+    top:0;
+    bottom: 0;
+    transition: 0.5s;
+}
+
+
+.span{
+    position: absolute;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    top: 50%;
+    right: -20px;
+}
+button.relative {
+    position: relative;
+}
+
+button .absolute {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #f87171; /* Red color */
+    color: #ffffff; /* White color */
+    font-size: 0.75rem; /* Small text size */
+    font-weight: 600; /* Semi-bold */
+    height: 20px;
+    width: 20px;
+    border-radius: 9999px; /* Full circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffffff; /* White border */
+}
+
+
+body.activeTabCart .cart{
+    right: 0;
+}
+body.activeTabCart .container{
+    transform: translateX(-140px);
+    width: 1200px;
+    max-width: 80vw;
+
+}
+/* app.css */
+
+.food-card {
+    max-width: 22rem;
+    height: 24rem;
+    background-color: white;
+    border: 1px solid #e2e8f0; /* border-gray-200 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* shadow-md */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    overflow: hidden; /* Ensures no content overflows the card */
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+}
+
+.food-card img {
+    width: 100%;
+    height: 12rem; /* Adjust this height to fit your needs */
+    object-fit: cover;
+}
+
+
+.food-card .p-5 {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Takes available space */
+    overflow: hidden; /* Ensures no content overflows the card */
+}
+
+.food-card h5 {
+    font-size: 1.25rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.food-card p {
+    font-size: 1rem; /* font-normal */
+    color: #4a5568; /* text-gray-700 */
+    margin-bottom: 0.5rem; /* mb-3 */
+    flex-grow: 1; /* Allows the description to take up remaining space */
+    max-height: 6rem; /* Sets a limit to the height of the description */
+    overflow-y: auto; /* Adds a vertical scrollbar if the text is too long */
+    white-space: normal; /* Allows text to wrap */
+    line-height: 1.5rem; /* Adjust the line height if needed */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.food-card span {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    margin-top: auto; /* Pushes the price to the bottom of the card */
+}
+
+.food-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* hover:shadow-xl */
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+/* Smaller state for food cards when cart is open */
+.food-card.smaller {
+     /* Smaller size */
+}
+
+body.activeTabCart .food-card{
+    transform: scale(0.93);
+
+}
+@media (max-width: 767px) {
+    .food-card {
+        width: 100%;
+    }
+    .cart {
+        width: 45%;
+    }
+    .container {
+        width: 100vw;
+    }
+    .sidebar {
+        transition: 0.5s;
+    }
+    body.activeTabCart .sidebar {
+        transform: translateX(-400px);
+        transition: 0.5s;
+    }
+    body.activeTabCart .food-card {
+        position: relative;
+        transform: scale(1.08);
+        width: 45vw;
+        margin-bottom: 40px;
+    }
+    body.activeTabCart .container {
+        width: 100vw;
+        transform: translateX(-220px);
+        margin: auto;
+    }
+}
+@media (min-width: 768px) and (max-width: 999px) {
+    .food-card {
+        transform: scale(1);
+        margin: auto;
+    }
+    .container {
+        width: 100vw;
+    }
+
+    body.activeTabCart .food-card {
+
+        transform: scale(0.85);
+
+
+    }
+    body.activeTabCart .container {
+        width: 100vw;
+        transform: translateX(-130px);
+        margin: auto;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 999px) {
+    .food-card {
+        transform: scale(1);
+        margin: auto;
+    }
+    .container {
+        width: 100vw;
+    }
+
+    body.activeTabCart .food-card {
+
+        transform: scale(0.9);
+
+
+    }
+    body.activeTabCart .container {
+        width: 100vw;
+        transform: translateX(-130px);
+        margin: auto;
+    }
+}
+@media (min-width: 999px) and (max-width: 1024px) {
+    .cart{
+        width: 300px;
+    }
+    .food-card {
+        transform: scale(1);
+        margin: auto;
+    }
+    .container {
+        width: 80vw;
+        padding-left: 160px;
+    }
+
+    body.activeTabCart .food-card {
+
+        transform: scale(0.95);
+
+
+    }
+    body.activeTabCart .container {
+        width: 100vw;
+        transform: translateX(-130px);
+        margin: auto;
+    }
+}
+/* For screens between 1024px and 1280px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    #z {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body.activeTabCart .container {
+        width: 100vw;
+        transform: translateX(-130px);
+        margin: auto;
+        padding-left: 220px;
+    }
+
+    body.activeTabCart .food-card {
+        transform: scale(0.95);
+
+    }
+}
+
+/* For screens larger than 1280px */
+@media (min-width: 1280px) {
+    #z {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    body.activeTabCart .container {
+        width: 100vw;
+        transform: translateX(-130px);
+        margin: auto;
+        padding-left: 220px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.content {
+    flex: 1;
+    padding-left: 220px;
+    padding-right:  60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top:0;
+    bottom: 0;
+    z-index: 99;
+    overflow-y: auto;
+    width: 200px;
+    height: auto;
+    background: linear-gradient(45deg, #ff6b6b, #f7c531);
+    padding: 20px;
+    color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+}
+
+
+
+.sidebar ul li img {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+.sidebar ul li a {
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.resized-png {
+    width: 30px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+.resized-jpg {
+    width: 500px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+.resized-gif {
+    width: 120px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+
+
+
+
+
