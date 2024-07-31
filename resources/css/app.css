@@ -253,12 +253,15 @@ body.activeTabCart .food-card{
     #z {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .cart{
+        width: 220px;
+    }
 
     body.activeTabCart .container {
         width: 100vw;
         transform: translateX(-130px);
         margin: auto;
-        padding-left: 220px;
+        padding-left: 240px;
     }
 
     body.activeTabCart .food-card {

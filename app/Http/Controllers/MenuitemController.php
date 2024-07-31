@@ -64,22 +64,27 @@ class MenuitemController extends Controller
 
     public function store(Request $request, Category $category)
     {
+        // Validate the request data
         $request->validate([
             'item_name' => 'required|string|max:255',
             'item_description' => 'required|string',
             'item_price' => 'required|numeric|min:0',
+            'image_url' => 'required|url', // Add validation for the image_url
         ]);
 
+        // Create a new menu item
         Menuitem::create([
             'name' => $request->item_name,
             'description' => $request->item_description,
             'price' => $request->item_price,
+            'image_url' => $request->image_url, // Include image_url in the create method
             'category_id' => $category->id,
         ]);
 
-
+        // Redirect back with success message
         return redirect('/menu/'.$category->name)->with('success', 'Item added successfully!');
     }
+
 
 
 
@@ -102,27 +107,37 @@ class MenuitemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMenuitemRequest $request, Menuitem $menuitem)
+    public function update(Request $request, Menuitem $menuitem)
     {
-        //
+        // Validate the incoming data
+        $validatedData = $request->validate([
+            'item_name' => 'required|string|max:255',
+            'item_description' => 'required|string',
+            'item_price' => 'required|numeric|min:0',
+            'image_url' => 'nullable|url'
+        ]);
+
+        // Update the menu item with the validated data
+        $menuitem->update([
+            'name' => $validatedData['item_name'],
+            'description' => $validatedData['item_description'],
+            'price' => $validatedData['item_price'],
+            'image_url' => $validatedData['image_url'] ?? $menuitem->image_url, // Preserve existing image_url if not provided
+        ]);
+
+        // Redirect or return a response
+        return redirect()->route('menu')->with('success', 'Menu item updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category, Request $request)
+    public function destroy(Menuitem $menuitem)
     {
-        // Get the ID of the menu item from the request
-        $menuitemId = $request->input('menuitem_id');
-
-        // Find the menu item within the given category
-        $menuitem = $category->menuitems()->findOrFail($menuitemId);
-
-        // Delete the menu item
         $menuitem->delete();
 
-        // Redirect back with a success message
-        return redirect()->route('menu.show', ['category' => $category->id])->with('success', 'Item deleted successfully!');
+        return redirect()->back()->with('success', 'Menu item deleted successfully.');
     }
 
 }

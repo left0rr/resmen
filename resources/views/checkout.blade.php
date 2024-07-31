@@ -110,13 +110,22 @@
             <p>Thank you for dining with us! We look forward to serving you again soon.</p>
         </section>
         <section class="cta">
-            <a href="{{ url('/menu') }}" class="button">Order More</a>
+            <a href="/" class="button" id="orderMoreButton">Order More</a>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Our Restaurant. All rights reserved.</p>
     </footer>
 </div>
+<script>
+    document.getElementById('orderMoreButton').addEventListener('click', function(event) {
+        // Clear the cart items from localStorage
+        localStorage.removeItem('cartItems');
+
+        // Redirect to the menu page
+        window.location.href = "{{ url('/menu') }}";
+    });
+</script>
 
 </body>
 </html>

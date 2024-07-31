@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>res-menu</title>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
@@ -48,8 +50,10 @@
             <div class="mb-4">
                 <label for="discount-code" class="block text-sm font-medium text-gray-700">Discount Code</label>
                 <div class="flex mt-1">
-                    <input type="text" id="discount-code" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" placeholder="Enter code">
-                    <button @click="applyDiscount" class="ml-2 px-4 py-2 border border-transparent text-sm font-medium rounded-r-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Apply</button>
+                    <input type="text" id="discount-code" x-model="discountCode" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" placeholder="Enter code">
+                    <button @click="applyDiscount" class="ml-2 px-4 py-2 border border-transparent text-sm font-medium rounded-r-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Apply
+                    </button>
                 </div>
             </div>
             <div class="flex justify-between items-center border-t border-gray-200 pt-4">
@@ -241,7 +245,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Ensure CSRF token is included
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     },
                     body: JSON.stringify({ discountCode: this.discountCode })
                 })
@@ -249,7 +253,7 @@
                     .then(data => {
                         console.log(data); // Log the response to check if `discountAmount` is present
                         if (data.success) {
-                            this.totalPrice = this.totalPrice -data.discountAmount; // Update with actual discount amount returned
+                            this.totalPrice = this.totalPrice -data.discountAmount;
                             this.saveToLocalStorage();
                             alert('Discount applied!');
                         } else {

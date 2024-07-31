@@ -16,7 +16,6 @@ class Menuitem extends Model
         'image_url',  // Ensure this is fillable
     ];
 
-// Optionally, set default values if necessary
     protected $attributes = [
         'image_url' => 'default_image_url_here',  // Set a default URL if needed
     ];

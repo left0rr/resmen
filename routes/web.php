@@ -13,7 +13,8 @@ Route::controller(MenuitemController::class)->group(function () {
     Route::get('/menu', [MenuitemController::class, 'index'])->name('menu');
     Route::get('/menu/{category}', [MenuitemController::class, 'show']);
     Route::post('/menu/{category}', [MenuitemController::class, 'store'])->name('menuitems.store');
-    Route::delete('/menu/{category}', [MenuitemController::class, 'destroy'])->name('menuitem.destroy');
+    Route::delete('/menu/{menuitem}', [MenuitemController::class, 'destroy'])->name('menuitem.destroy');
+    Route::patch('/menu/{menuitem}', [MenuitemController::class, 'update'])->name('menuitem.update');
 
 
 

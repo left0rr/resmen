@@ -33,7 +33,7 @@
             <div class="flex-1 overflow-y-auto">
                 <template x-for="item in cartItems" :key="item.id">
                     <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center ove">
+                        <div class="flex items-center">
                             <img :src="item.image" alt="" class="w-12 h-12 rounded-md mr-3">
                             <div>
                                 <h4 class="text-md font-semibold" x-text="item.name"></h4>
